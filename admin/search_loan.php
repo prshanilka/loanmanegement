@@ -33,8 +33,9 @@ else
 		<th>Time (Weeks)</th>
 		<th>Loan No # </th>
 		<th>Date</th>
+		<th>Top Up</th>
 		<th>Delete</th>
-		<th>Updates</th>
+		
 	</Tr>
 		<?php 
 
@@ -71,10 +72,10 @@ while($row = $result->fetch_assoc()) {
 		}
 
 ?>
-
+<Td><button id="topup" type="button" class="btn btn-outline-primary">TopUp</button></td>
 <Td><a href="javascript:Deleteloan('<?php echo $row['l_id']; ?>')" style='color:Red'><span class='glyphicon glyphicon-trash'></span></a></td>
 
-<Td><a href="index.php?page=update_loan_record&loan_id=<?php echo $row['loan_id']; ?>" style='color:green'><span class='glyphicon glyphicon-edit'></span></a></td>
+
 <?php 
 
 echo "</Tr>";
@@ -83,4 +84,18 @@ $i++;
 		?>
 		
 </table>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#topup").click(function(){
+				$.ajax({
+					url: 'php/topup.php',
+					method: 'post',
+					data: 'nic=' + nic
+				}).done(function(loan){
+					console.log(loan);
+				});
+	}
+}
+</script>
 <?php }?>

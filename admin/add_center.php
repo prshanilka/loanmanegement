@@ -51,4 +51,5 @@ $err="<font color='blue'>Congrates new Group added successfully</font>";
 		<input type="reset" class="btn btn-success"/>
 		</div>
 	</div>
+	
 </form>	
